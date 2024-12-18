@@ -1,7 +1,8 @@
 #include <stdio.h>
 int main()
 {
-    int N, T[100];
+    int N;
+    int T[100];
 
     do
     {
@@ -22,18 +23,7 @@ int main()
         scanf("%d", &T[i]);
     }
 
-    int j = 0;
-
-    for (int i = 1; i < N; i++)
-        if (T[i] != 0)
-        {
-            T[j] = T[i];
-            j++;
-        }
-
-    N = j+1;
-
-    for (int i = 0; i < j; i++)
+    for (int i = N - 1; i >= 0; i--)
         printf("%d\n", T[i]);
 
     return 0;

@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 int main()
 {
     int N, T[100];
@@ -22,18 +23,21 @@ int main()
         scanf("%d", &T[i]);
     }
 
-    int j = 0;
+    int curr = 0;
 
-    for (int i = 1; i < N; i++)
-        if (T[i] != 0)
+    for (int i = 0; i < N; i++)
+        if (T[i] < 0)
         {
-            T[j] = T[i];
-            j++;
+            int temp = T[i];
+
+            for (int j = i; j > curr; j--) 
+                T[j] = T[j - 1];
+
+            T[curr] = temp;
+            curr++;
         }
 
-    N = j+1;
-
-    for (int i = 0; i < j; i++)
+    for (int i = 0; i < N; i++)
         printf("%d\n", T[i]);
 
     return 0;

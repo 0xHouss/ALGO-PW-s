@@ -1,7 +1,8 @@
 #include <stdio.h>
 int main()
 {
-    int N, T[100];
+    int N;
+    int T[100];
 
     do
     {
@@ -22,19 +23,16 @@ int main()
         scanf("%d", &T[i]);
     }
 
-    int j = 0;
+    int VAL;
 
-    for (int i = 1; i < N; i++)
-        if (T[i] != 0)
-        {
-            T[j] = T[i];
-            j++;
-        }
+    printf("Give the value to search for: ");
+    scanf("%d", &VAL);
 
-    N = j+1;
+    int occurences = 0;
 
-    for (int i = 0; i < j; i++)
-        printf("%d\n", T[i]);
+    for (int i = 0; i < N; i++)
+        if (T[i] == VAL)
+            occurences++;
 
-    return 0;
+    printf("The number of occurences of %d is: %d\n", VAL, occurences);
 }

@@ -1,6 +1,6 @@
 /*
 Algorithm Semi_Prime;
-Vars 
+Vars
     n, s, i, j: integer;
     sp, p: boolean;
 Begin
@@ -52,36 +52,26 @@ End.
 
 #include <stdio.h>
 
-int prime(int x) {
-    int prime = 1;
+int prime(int x)
+{
+    for (int i = 2; i <= x / 2; i++)
+        if (x % i == 0)
+            return 0;
 
-    for (int i = 2; i <= x/2; i++) {
-        if (x % i == 0) {
-            prime = 0;
-            break;
-        } 
-    }
-
-    return prime;
-} 
-
-int semi_prime(int x) {
-    int semiprime = 0;
-
-    for (int i = 2; i <= x/2; i++) {
-        int j = x / i;
-
-        if (x % i == 0 && j != i) {
-            if (prime(j) && prime(i)) {
-                semiprime = 1;
-            }
-        }
-    }
-
-    return semiprime;
+    return 1;
 }
 
-int main() {
+int semi_prime(int x)
+{
+    for (int i = 2; i <= x / 2; i++)
+        if (x % i == 0 && x / i != i && prime(x / i) && prime(i))
+            return 1;
+
+    return 0;
+}
+
+int main()
+{
     int n;
 
     printf("Give a number: ");
@@ -89,9 +79,9 @@ int main() {
 
     int s = 0;
 
-    for (int i = 1; i <= n; i++) {
-        if (semi_prime(i)) s += i;
-    }
+    for (int i = 1; i <= n; i++)
+        if (semi_prime(i))
+            s += i;
 
     printf("The sum: %d", s);
 }
